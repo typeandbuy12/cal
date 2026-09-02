@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />
+<title>CandyCalc ✨ — Sweet Math, Made Simple</title>
+<meta name="description" content="A cute pastel calculator with a magical 3D design." />
+<meta name="theme-color" content="#F8BBD0" />
+
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" type="image/svg+xml" href="icons/icon-192.svg" />
+<link rel="apple-touch-icon" href="icons/icon-192.svg" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="CandyCalc" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="strawberry">
+
+  <!-- ===================== SPLASH SCREEN ===================== -->
+  <div id="splash-screen" class="splash-screen" aria-hidden="true">
+    <div class="splash-sparkles">
+      <span>✨</span><span>⭐</span><span>💫</span><span>✨</span><span>⭐</span>
+    </div>
+    <div class="splash-content">
+      <h1 class="splash-title">✨ CandyCalc ✨</h1>
+      <p class="splash-subtitle">Sweet math, made simple!</p>
+      <div class="splash-loader"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== BACKGROUND DECORATIONS ===================== -->
+  <div class="bg-decor" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="cloud cloud-1">☁️</div>
+    <div class="cloud cloud-2">☁️</div>
+    <span class="star star-1">✦</span>
+    <span class="star star-2">✧</span>
+    <span class="star star-3">✦</span>
+    <span class="star star-4">✧</span>
+    <span class="star star-5">✦</span>
+    <span class="heart heart-1">💗</span>
+    <span class="heart heart-2">💜</span>
+    <span class="heart heart-3">💙</span>
+    <span class="sparkle sparkle-1">✨</span>
+    <span class="sparkle sparkle-2">✨</span>
+    <span class="bubble bubble-1"></span>
+    <span class="bubble bubble-2"></span>
+    <span class="bubble bubble-3"></span>
+  </div>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="top-bar">
+    <div class="brand">
+      <span class="brand-sparkle" aria-hidden="true">✨</span>
+      <span class="brand-name">CandyCalc</span>
+    </div>
+    <div class="top-actions">
+      <button id="sound-toggle" class="icon-btn" type="button" aria-pressed="false" aria-label="Toggle button sound effects">
+        <span id="sound-icon">🔈</span>
+      </button>
+      <button id="theme-panel-toggle" class="icon-btn" type="button" aria-label="Open theme picker" aria-expanded="false" aria-controls="theme-panel">
+        <span>🎨</span>
+      </button>
+      <button id="dark-toggle" class="icon-btn dark-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+        <span id="dark-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== THEME PANEL ===================== -->
+  <div id="theme-panel" class="theme-panel" role="dialog" aria-label="Theme picker" hidden>
+    <p class="theme-panel-title">Choose your vibe</p>
+    <div class="theme-options">
+      <button class="theme-option" data-theme="strawberry" type="button">
+        <span class="theme-swatch swatch-strawberry"></span>
+        🌸 Strawberry Dream
+      </button>
+      <button class="theme-option" data-theme="lavender" type="button">
+        <span class="theme-swatch swatch-lavender"></span>
+        💜 Lavender Magic
+      </button>
+      <button class="theme-option" data-theme="blue" type="button">
+        <span class="theme-swatch swatch-blue"></span>
+        🩵 Blue Bubble
+      </button>
+      <button class="theme-option" data-theme="rainbow" type="button">
+        <span class="theme-swatch swatch-rainbow"></span>
+        🌈 Rainbow Candy
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN APP ===================== -->
+  <main class="app-wrap">
+    <section class="calculator" role="application" aria-label="CandyCalc calculator">
+
+      <p class="calc-label">CandyCalc <span aria-hidden="true">✨</span></p>
+
+      <div class="display-shell">
+        <div class="display-shine" aria-hidden="true"></div>
+        <div class="display-prev" id="display-prev" aria-hidden="true"></div>
+        <div class="display" id="display" aria-live="polite" aria-atomic="true">0</div>
+      </div>
+
+      <div class="keys" id="keys">
+        <button class="key key-special key-ac" type="button" data-action="clear" aria-label="All clear">AC</button>
+        <button class="key key-special key-del" type="button" data-action="delete" aria-label="Delete last digit">DEL</button>
+        <button class="key key-op key-div" type="button" data-op="÷" aria-label="Divide">÷</button>
+        <button class="key key-op key-mul" type="button" data-op="×" aria-label="Multiply">×</button>
+
+        <button class="key key-num" type="button" data-num="7">7</button>
+        <button class="key key-num" type="button" data-num="8">8</button>
+        <button class="key key-num" type="button" data-num="9">9</button>
+        <button class="key key-op key-sub" type="button" data-op="−" aria-label="Subtract">−</button>
+
+        <button class="key key-num" type="button" data-num="4">4</button>
+        <button class="key key-num" type="button" data-num="5">5</button>
+        <button class="key key-num" type="button" data-num="6">6</button>
+        <button class="key key-op key-add" type="button" data-op="+" aria-label="Add">+</button>
+
+        <button class="key key-num" type="button" data-num="1">1</button>
+        <button class="key key-num" type="button" data-num="2">2</button>
+        <button class="key key-num" type="button" data-num="3">3</button>
+        <button class="key key-equal" type="button" data-action="equals" aria-label="Calculate result">
+          <span class="equal-shine" aria-hidden="true"></span>=
+        </button>
+
+        <button class="key key-num key-zero" type="button" data-num="0">0</button>
+        <button class="key key-num" type="button" data-num=".">.</button>
+      </div>
+    </section>
+
+    <p class="footer-note">Made with 💗 &amp; a sprinkle of sparkle</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
